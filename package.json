@@ -1,0 +1,43 @@
+{
+  "name": "pulldata-bet-api",
+  "version": "1.0.0",
+  "description": "package for analyzing live games and in-play events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorratts13/pulldata-bet-api.git"
+  },
+  "keywords": [
+    "bet365",
+    "bet",
+    "365",
+    "inplay",
+    "jogos",
+    "ao",
+    "vivo",
+    "futebol",
+    "futebol",
+    "ao",
+    "vivo",
+    "aposta",
+    "betplace",
+    "betsapi",
+    "bet365",
+    "api"
+  ],
+  "author": "Victor Ratts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorratts13/pulldata-bet-api/issues"
+  },
+  "homepage": "https://github.com/victorratts13/pulldata-bet-api#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "axios-cookiejar-support": "^1.0.0",
+    "qs": "^6.9.4",
+    "tough-cookie": "^4.0.0"
+  }
+}
