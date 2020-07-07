@@ -82,7 +82,7 @@ game.getInplay(33, 0, 28, 28).then((rest) => {
 ~~~
 and get this data
 
-```sh
+``` sh
 #######################
 gameName:Tottenham v Everton
 gameHash:L1-1-5-50345789-2-737_33_0
@@ -116,6 +116,42 @@ gameName:Kayserispor v Besiktas
 gameHash:L1-1-5-50353304-2-737_33_0
 gamelink: https://www.bet365.com/#/IP/EV15503533042C1
 ```
+
+## get Nets Games
+
+for get next games use this.
+
+``` js
+game.getNexts(33, 0, 28, 28).then((nexts) => {
+    console.log(nexts)
+}).catch((err) => {
+    console.log(err)
+})
+```
+
+this code return this
+
+``` js
+{
+    info: 'SV UNDEBA',
+    bcData: '20200707003000',
+    ptData: 'L1-1-5-50463301-2-737_33_0',
+    fdData: 'SV UNDEBA v RKSV Centro Dominguito',
+    mlData: '90897722C1A_33_0/1777-90897722C1A_33_0',
+    n2: 'RKSV Centro Dominguito',
+    id: 'PC865475127',
+    fi: '90897722'
+},
+```
+> - info: name of team
+> - bcData: Date Time format of game
+> - ptData: info of link and open markets
+> - fdData: Game Name
+> - mlData: info of FI hash and connect markets
+> - n2: name of guest Team
+> - id: id of game
+> - fi: FId bet365 of game
+
 ## contact
 
 ~~~json
