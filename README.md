@@ -117,7 +117,7 @@ gameHash:L1-1-5-50353304-2-737_33_0
 gamelink: https://www.bet365.com/#/IP/EV15503533042C1
 ```
 
-## get Nets Games
+## get Nexts Games
 
 for get next games use this.
 
