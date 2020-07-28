@@ -152,6 +152,57 @@ this code return this
 > - id: id of game
 > - fi: FId bet365 of game
 
+## Get Matchs
+
+to get game matches you can use this:
+
+```javascript
+game.getMatchs(33, 0, 28, 28).then((nexts) => {
+	for(matchs of nexts){
+		console.log(matchs)
+		//console.log(matchs.first.NNA)
+		//console.log(matchs.first.NNA)
+	}
+}).catch((err) => {
+	console.log(err)
+})
+```
+and return this
+```javascript
+{
+  first: {
+    NBC: '20200729010000',
+    NFS: '0',
+    NPT: '',
+    NMT: '1',
+    NCL: '1',
+    NCC: 'Mexico Apertura',
+    NTR: '',
+    NIA: '1',
+    NPD: '#AC#B1#C1#D8#E91567768#F3#',
+    NCB: 'AI#AG#AR#AW#BS#BB#BZ#BM#BO#BR#VG#CA#KY#CL#CO#CR#CU#DM#DO#EC#SV#GF#GD#GP#GT#GY#HT#HN#JM#MQ#MX#MS#AN#NI#PA#PY#PE#PR#KN#LC#VC#SR#TC#TT#US#UY',
+    NVI: 'VE#FK#UM#GS#PM;VI=7',
+    NNA: 'Monterrey vs Toluca',
+    NKI: '6 vs 2',
+    NKC: '#F0F0F0,#022857,#F0F0F0,#F0F0F0,#C40010,#0046A8,#022857 vs #C40010,#C40010,#C40010,#C40010,#C40010,#0046A8,#C40010;'
+  },
+  data: {
+    CTID: '907485142',
+    CTOR: '2',
+    CTCL: '1',
+    CTFI: '91567768',
+    CTNA: 'Toluca',
+    CTN2: '2',
+    CTOD: '6/1',
+    CTHA: '',
+    CTHD: '',
+    CTSU: '0',
+    CTBS: 'Toluca',
+    CTPH: '0',
+    CTLA: ';'
+  }
+}
+```
 ## contact
 
 ~~~json

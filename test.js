@@ -19,8 +19,12 @@ let game = new inplay();
 //     console.log('Error: ' + err)
 // })
 
-game.getNexts(33, 0, 28, 28).then((nexts) => {
-	console.log(nexts)
+game.getMatchs(33, 0, 28, 28).then((nexts) => {
+	for(matchs of nexts){
+		console.log(matchs)
+		//console.log(matchs.first.NNA)
+		//console.log(matchs.first.NNA)
+	}
 }).catch((err) => {
 	console.log(err)
 })

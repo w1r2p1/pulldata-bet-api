@@ -1,6 +1,6 @@
 {
   "name": "pulldata-bet-api",
-  "version": "1.0.7",
+  "version": "1.1.2",
   "description": "package for analyzing live games and in-play events.",
   "main": "index.js",
   "scripts": {
