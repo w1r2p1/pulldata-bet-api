@@ -1,35 +1,19 @@
 'use strict'
-const axios = require('axios').default;
 const qs = require('qs')
-const axiosCookieSuport = require('axios-cookiejar-support').default;
+const axios = require('axios').default;
+const axiosCookieJarSupport = require('axios-cookiejar-support').default;
 const tough = require('tough-cookie');
 
-axiosCookieSuport(axios);
+axiosCookieJarSupport(axios);
 const cookieJar = new tough.CookieJar();
-let apiCookie = { withCredentials: true, jar: cookieJar };
 
-let api = axios.create({
-    baseURL: 'https://www.bet365.com/',
-    headers: {
-        'Accept': '*/*',
-        'X-Requested-With': 'XMLHttpRequest',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-        'Content-Length': 178,
-        'Content-type': 'application/x-www-form-urlencoded',
-        'Host': 'members.bet365.com',
-        'Origin': 'https://www.bet365.com',
-        'Pragma': 'no-cache',
-        'Referer': 'https://www.bet365.com/',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-site',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'
-    }
-
+var uri = 'https://www.bet365.com/'
+const api = axios.create({
+    url: uri,
+    withCredentials: true,
+    jar: cookieJar
 })
+
 
 
 
