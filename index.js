@@ -14,28 +14,77 @@ const api = axios.create({
     jar: cookieJar
 })
 
-
-
-
-//console.log(apiCookie)
-
 class inplay {
+    getAllGames(lid, zid, cid, ctid) {
+        return new Promise((resolve, reject) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((all) => {
+                //return resolve(all.data);
+                const rawMessage = all.data;
+                var split, glit = [];
+                var splitArr = rawMessage.split('|')
+                splitArr = splitArr.sort();
+                for (split of splitArr) {
+                    //console.log(split)
+                    var PA = split.indexOf('PA');
+                    var MA = split.indexOf('MA');
+                    var CL = split.indexOf('CL');
+                    var MG = split.indexOf('MG');
+                    var EV = split.indexOf('EV');
+                    
+                    if (EV == 0) {
+                        try {
+                            var obj = split.replace(/EV;/gi, '{ "type":"getEvent","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
+                            glit.push(JSON.parse(obj))
+                        } catch (e) {
+                            var obj = { error: 'Erro' }
+                        }
+                    }
+
+                    if (PA == 0) {
+                        try {
+                            var obj = split.replace(/PA;/gi, '{ "type":"eventPlay","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
+                            glit.push(JSON.parse(obj))
+                        } catch (e) {
+                            var obj = { error: 'Erro' }
+                        }
+                    }
+
+                    if (MA == 0) {
+                        try {
+                            var obj = split.replace(/MA;/gi, '{ "type":"eventMatch","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
+                            glit.push(JSON.parse(obj))
+                        } catch (e) {
+                            var obj = { error: 'Erro' }
+                        }
+                    }
+
+                    if (CL == 0) {
+                        try {
+                            var obj = split.replace(/CL;/gi, '{ "type":"clain","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
+                            glit.push(JSON.parse(obj))
+                        } catch (e) {
+                            var obj = { error: 'Erro' }
+                        }
+                    }
+
+                    if (MG == 0) {
+                        try {
+                            var obj = split.replace(/MG;/gi, '{ "type":"magic","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
+                            glit.push(JSON.parse(obj))
+                        } catch (e) {
+                            var obj = { error: 'Erro' }
+                        }
+                    }
+                }
+
+                return resolve(glit)
+            })
+        })
+    }
+
     getInplay(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
-
-            //console.log(apiCookie)
-            //console.log(`SportsBook.API/web?lid=${lid}&zid=${zid}&pd=${pd}&cid=${cid}&ctid=${ctid}`)
-            // let query = qs.stringify({
-            //     lid: lid,
-            //     zid: zid,
-            //     cid: cid,
-            //     ctid: ctid
-            // })
-
-            // api.get('defaultapi/sports-configuration/', apiCookie).then((config) => {
-            //    config = config.data
-            //    console.log(config)
-            api.get(`SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`, apiCookie).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((game) => {
                 game = game.data
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {
@@ -135,7 +184,7 @@ class inplay {
 
     getMatchs(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
-            api.get(`SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AS%23B1%23&cid=${cid}&ctid=${ctid}`, apiCookie).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AS%23B1%23&cid=${cid}&ctid=${ctid}`).then((game) => {
                 game = game.data;
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {
@@ -258,7 +307,7 @@ class inplay {
     getNexts(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
 
-            //console.log(apiCookie)
+            //console.lo)
             //console.log(`SportsBook.API/web?lid=${lid}&zid=${zid}&pd=${pd}&cid=${cid}&ctid=${ctid}`)
             // let query = qs.stringify({
             //     lid: lid,
@@ -267,10 +316,10 @@ class inplay {
             //     ctid: ctid
             // })
 
-            // api.get('defaultapi/sports-configuration/', apiCookie).then((config) => {
+            // api.get('defaultapi/sports-configuration/').then((config) => {
             //    config = config.data
             //    console.log(config)
-            api.get(`SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`, apiCookie).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((game) => {
                 game = game.data
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {

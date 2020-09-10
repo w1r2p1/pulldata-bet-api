@@ -19,12 +19,17 @@ let game = new inplay();
 //     console.log('Error: ' + err)
 // })
 
-game.getMatchs(33, 0, 28, 28).then((nexts) => {
-	for(matchs of nexts){
-		console.log(matchs)
-		//console.log(matchs.first.NNA)
-		//console.log(matchs.first.NNA)
-	}
-}).catch((err) => {
-	console.log(err)
+game.getInplay(33, 0, 28, 28).then((rest) => {
+	console.log(rest)
 })
+
+/*
+game.getAllGames(33, 0, 28, 28).then((plays) => {
+	//console.log(plays)
+	for(loop of plays){
+		if(loop.type == 'magic'){
+			console.log(loop)
+		}
+	}
+})
+*/

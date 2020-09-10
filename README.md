@@ -2,7 +2,7 @@
 
  
 
-![version](https://img.shields.io/badge/Version-1.0.0-brightgreen) ![env](https://img.shields.io/badge/enviroment-Node-green) ![pack](https://img.shields.io/badge/package-NPM-red)
+![version](https://img.shields.io/badge/Version-2.0-blue) ![env](https://img.shields.io/badge/enviroment-Node-green) ![pack](https://img.shields.io/badge/package-NPM-red)
 
 ## Pull data bet365
 
@@ -203,6 +203,40 @@ and return this
   }
 }
 ```
+## get All events
+
+this method you can get all games (in play and matchs)
+
+~~~js
+game.getAllGames(33, 0, 28, 28).then((plays) => {
+	//console.log(plays)
+	for(loop of plays){
+		console.log(loop)
+	}
+})
+~~~
+
+this method returns a javascript object with all data 
+
+~~~js
+{
+  type: 'eventPlay',
+  data: {
+    ID: 'PC993345835',
+    NA: 'LA Galaxy II',
+    N2: 'San Diego Loyal',
+    FD: 'LA Galaxy II v San Diego Loyal',
+    FI: '92863934',
+    BC: '20200910030000',
+    LI: '1502-1',
+    PD: '#AC#B1#C1#D8#E92863934#F3#I1#P^13#Q^0#',
+    IT: 'ACB1C1D13F2Q1F12RCC-PA-AEACB1C1D8E92863934F3I1P13Q0',
+    FS: '0',
+    MR: '28'
+  }
+}
+~~~
+
 ## contact
 
 ~~~json
