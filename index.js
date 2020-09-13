@@ -6,10 +6,17 @@ const tough = require('tough-cookie');
 
 axiosCookieJarSupport(axios);
 const cookieJar = new tough.CookieJar();
-
 var uri = 'https://www.bet365.com/'
+var head = {
+    Accept: 'application/json, text/plain, */*',
+    //'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/85.0.4183.83 Mobile/15E148 Safari/604.1'
+    'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+    //Host : ''
+}
+
 const api = axios.create({
     url: uri,
+    headers: head,
     withCredentials: true,
     jar: cookieJar
 })
@@ -17,7 +24,7 @@ const api = axios.create({
 class inplay {
     getAllGames(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
-            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((all) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`, cookieJar).then((all) => {
                 //return resolve(all.data);
                 const rawMessage = all.data;
                 var split, glit = [];
@@ -29,16 +36,6 @@ class inplay {
                     var MA = split.indexOf('MA');
                     var CL = split.indexOf('CL');
                     var MG = split.indexOf('MG');
-                    var EV = split.indexOf('EV');
-                    
-                    if (EV == 0) {
-                        try {
-                            var obj = split.replace(/EV;/gi, '{ "type":"getEvent","data":{"').replace(/=/gi, `":"`).replace(/;/gi, `","`).slice(0, -2) + '} }'
-                            glit.push(JSON.parse(obj))
-                        } catch (e) {
-                            var obj = { error: 'Erro' }
-                        }
-                    }
 
                     if (PA == 0) {
                         try {
@@ -78,13 +75,15 @@ class inplay {
                 }
 
                 return resolve(glit)
+            }).catch((e) => {
+                return reject(e)
             })
         })
     }
 
     getInplay(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
-            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`, cookieJar).then((game) => {
                 game = game.data
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {
@@ -184,7 +183,7 @@ class inplay {
 
     getMatchs(lid, zid, cid, ctid) {
         return new Promise((resolve, reject) => {
-            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AS%23B1%23&cid=${cid}&ctid=${ctid}`).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AS%23B1%23&cid=${cid}&ctid=${ctid}`, cookieJar).then((game) => {
                 game = game.data;
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {
@@ -316,10 +315,10 @@ class inplay {
             //     ctid: ctid
             // })
 
-            // api.get('defaultapi/sports-configuration/').then((config) => {
+            // api.get('defaultapi/sports-configuration/', cookieJar).then((config) => {
             //    config = config.data
             //    console.log(config)
-            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`).then((game) => {
+            api.get(`${uri}SportsBook.API/web?lid=${lid}&zid=${zid}&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=${cid}&ctid=${ctid}`, cookieJar).then((game) => {
                 game = game.data
                 var arr = game.split('|'), restData = [], pullData = [], val
                 for (val of arr) {
