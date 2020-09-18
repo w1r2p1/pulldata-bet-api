@@ -12,6 +12,7 @@ var head = {
     //'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/85.0.4183.83 Mobile/15E148 Safari/604.1'
     'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
     //Host : ''
+    Cookie: `aps03=cf=N&cg=1&cst=0&ct=28&hd=N&lng=33&oty=2&tzi=16`
 }
 
 const api = axios.create({
