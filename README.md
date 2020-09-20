@@ -237,6 +237,126 @@ this method returns a javascript object with all data
 }
 ~~~
 
+## all Defaults
+
+you can get all default configs from bet365 server
+
+~~~js
+//this method dont need any param
+game.allDefaults().then((rest) => {
+	console.log(rest)
+})
+~~~
+
+you can get this return:
+
+~~~js
+{
+  ns_weblib_util: {
+    WebsiteConfig: {
+      VIRTUALS_HOST: 'https://vsports.bet365.com',
+      SERVER_TIME: 1600578198,
+      DEFAULT_USERAGENT: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+      GEOCOMPLY_INSTALLER_ID: '',
+      GEOCOMPLY_ENVIROMENT: '',
+      GEOCOMPLY_HOSTNAME: '',
+      GEOCOMPLY_VERSION: '',
+      UNITED_STATES_OF_AMERICA_REGULATORY_FEATURES_ENABLED: false,
+      SITE_EXCLUDED_SPORTS: [],
+      SITE_EXCLUDED_VIRTUALS: [],
+      TAX_CONFIGURATION: '',
+      DEFAULT_ZONE_TOPIC_PREFIXES: [],
+      DEFAULT_ZONE: ''
+    }
+  },
+  flashvars: {
+    USER_NAME: '',
+    LOGGED_IN: false,
+    CURRENCY_CODE: 'BRL',
+    MARKET_GROUP_PREFERENCES: '',
+    MY_TEAMS: '',
+    LEAGUE_TABLES: '',
+    USER_OFFER_STATUS: 1,
+    ODDS_TYPE: '2',
+    ZID: '0',
+    TZA: '-240',
+    TZAM: '-240',
+    TZI: '16',
+    PHONE_NUMBER: '0021 800 12 365 365',
+    BET_TIMELEFT: 0,
+    WIN_STAKE: '0.50',
+    EACHWAY_STAKE: '0.25',
+    EXCLUSION_LEVEL: '2',
+    TDN: 'GMT-3',
+    CUSTOMER_TYPE: '1',
+    TAILORING_TYPE: '',
+    CountryCode: 'BR',
+    REGISTERED_COUNTRY_CODE: '28',
+    COUNTRY_STATE_ID: '0',
+    COUNTRY_GROUP_ID: '1',
+    LAST_LOGIN_TIME: '',
+    UNDELIMITED_LAST_LOGIN_TIME: '',
+    INACTIVITY_TIMEOUT: '0',
+    OFQ21: '28~1~0',
+    ACTIVITY_LIMIT: '0',
+    ACTIVITY_LIMIT_TIMEOUT: '0',
+    ACTIVITY_LIMIT_LOCKOUT: '0',
+    ACTIVITY_LIMIT_SESSION_LENGTH: '0',
+    SECOND_AUTH: false,
+    LAUNCH_NEMID: false,
+    TIME_LEFT: '1800',
+    LOAD_QD: false,
+    DEPOSIT_TYPE: '',
+    PAGE_DATA: '',
+    FAVOURITE_CLASSIFICATIONS: '',
+    TelephoneBettingId: '',
+    CodiceFiscale: '',
+    RESTRICTED_BETTING_ENABLED: 'false',
+    DISPLAY_GROUP_ID: 4,
+    DOMAIN_URL: 'www.bet365.com',
+    IS_DST: '1',
+    MEMBERS_URL: 'members.bet365.com',
+    IS_AUS_DOMAIN: 'false',
+    GeoComplyId: '12FAEED7DB70F070',
+    CURRENCY_GROUP_SEPARATOR: '.',
+    CURRENCY_DECIMAL_SEPARATOR: ',',
+    CURRENCY_SYMBOL: 'R&#36;',
+    CURRENCY_MIN_SEP_VALUE: 1000,
+    CURRENCY_PREFIX_SYMBOL: true,
+    CURRENCY_SPACE_REQUIRED: false,
+    CURRENCY_PLURAL_SYMBOL: '',
+    CURRENCY_EXCHANGE_RATE: 1,
+    SESSION_ID: '98F64544526EE7C0B9D6A985DE0F6A9A000003',
+    LANGUAGE_ID: '33',
+    ENABLED_MATCH_LIVE_CLASSIFICATIONS: [
+      '1',   '2',  '3',  '7',
+      '8',   '12', '13', '15',
+      '16',  '17', '18', '19',
+      '36',  '78', '91', '94',
+      '110'
+    ],
+    COOKIE_SECURITY_LEVEL: '; SameSite=None; Secure'
+  }
+}
+~~~
+
+## request default data
+
+if you have any return with status code 400 or 500, you can try use this method for get your data in original format or json format.
+
+for example:
+
+~~~js
+//SportsBook.API/web is the endpoint from bet
+//lid=33&zid=0&... is query string for request
+//json is a format of return, if null value, return is a string
+game.requestDefaultData('SportsBook.API/web', 'lid=33&zid=0&pd=%23AC%23B1%23C1%23D13%23F2%23Q1%23F%5E12%23&cid=28&ctid=28', 'json').then((rest) => {
+	console.log(rest)
+}).catch((e) => {
+	console.log(e)
+})
+~~~
+
 ## contact
 
 ~~~json
